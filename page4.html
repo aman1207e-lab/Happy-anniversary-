@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Our Letters 💌</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap');
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    min-height:100vh;
+    overflow:hidden;
+    font-family:"Caveat",cursive;
+
+    background:
+        radial-gradient(circle at 10% 10%,rgba(255,255,255,.9),transparent 25%),
+        radial-gradient(circle at 90% 90%,rgba(244,170,195,.5),transparent 30%),
+        linear-gradient(135deg,#ffe8f0,#f7d4e1,#fcebef);
+
+    color:#704452;
+}
+
+
+/* DOODLES */
+
+.doodle{
+    position:fixed;
+    z-index:1;
+    pointer-events:none;
+    color:#c66b88;
+    opacity:.38;
+    font-size:32px;
+}
+
+.d1{top:8%;left:7%;}
+.d2{top:18%;right:8%;}
+.d3{bottom:13%;left:7%;}
+.d4{bottom:8%;right:8%;}
+
+
+/* HEADER */
+
+.header{
+    position:relative;
+    z-index:5;
+    text-align:center;
+    padding:18px 10px 5px;
+}
+
+.header h1{
+    color:#b24f70;
+    font-size:clamp(36px,9vw,55px);
+    line-height:1;
+}
+
+.header p{
+    margin-top:7px;
+    color:#956174;
+    font-size:21px;
+}
+
+
+/* MAIN */
+
+.main{
+    position:relative;
+    z-index:5;
+
+    width:min(94vw,700px);
+    height:calc(100vh - 120px);
+
+    margin:auto;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+
+
+/* ENVELOPES */
+
+.envelopes{
+    width:100%;
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:13px;
+}
+
+.envelope{
+    position:relative;
+
+    height:245px;
+
+    overflow:hidden;
+
+    border-radius:25px;
+
+    cursor:pointer;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.7),
+            rgba(255,210,227,.35)
+        );
+
+    border:1px solid rgba(255,255,255,.95);
+
+    box-shadow:
+        0 20px 45px rgba(100,45,65,.17),
+        inset 0 1px 10px rgba(255,255,255,.95);
+
+    backdrop-filter:blur(22px);
+    -webkit-backdrop-filter:blur(22px);
+
+    transition:.3s ease;
+
+    -webkit-tap-highlight-color:transparent;
+}
+
+.envelope:active{
+    transform:scale(.95);
+}
+
+.envelope:hover{
+    transform:translateY(-6px);
+}
+
+
+/* FLAP */
+
+.flap{
+    position:absolute;
+
+    z-index:3;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:120px;
+
+    background:rgba(255,255,255,.5);
+
+    clip-path:polygon(
+        0 0,
+        50% 76%,
+        100% 0
+    );
+}
+
+
+/* FOLDS */
+
+.left-fold{
+    position:absolute;
+
+    bottom:0;
+    left:0;
+
+    width:55%;
+    height:90px;
+
+    background:rgba(255,255,255,.25);
+
+    clip-path:polygon(
+        0 100%,
+        100% 0,
+        0 0
+    );
+}
+
+.right-fold{
+    position:absolute;
+
+    bottom:0;
+    right:0;
+
+    width:55%;
+    height:90px;
+
+    background:rgba(235,175,195,.25);
+
+    clip-path:polygon(
+        100% 100%,
+        0 0,
+        100% 0
+    );
+}
+
+
+/* EMOJI */
+
+.mail{
+    position:absolute;
+
+    z-index:10;
+
+    top:72px;
+
+    width:100%;
+
+    text-align:center;
+
+    font-size:64px;
+
+    filter:drop-shadow(
+        0 8px 10px rgba(100,40,60,.18)
+    );
+}
+
+
+/* LABEL */
+
+.envelope-info{
+    position:absolute;
+
+    z-index:15;
+
+    left:5px;
+    right:5px;
+    bottom:15px;
+
+    text-align:center;
+}
+
+.envelope-info h2{
+    color:#a84c69;
+    font-size:23px;
+    line-height:1;
+}
+
+.envelope-info p{
+    margin-top:5px;
+    font-size:16px;
+    color:#946073;
+}
+
+
+/* NOTE */
+
+.note{
+    margin-top:17px;
+
+    text-align:center;
+
+    font-size:22px;
+    color:#986174;
+}
+
+
+/* NAVIGATION */
+
+.buttons{
+    width:100%;
+
+    display:flex;
+    justify-content:space-between;
+
+    margin-top:15px;
+}
+
+.nav-btn{
+    border:none;
+
+    font-family:"Caveat",cursive;
+    font-size:22px;
+
+    padding:8px 18px;
+
+    border-radius:25px;
+
+    cursor:pointer;
+
+    -webkit-tap-highlight-color:transparent;
+
+    background:rgba(255,255,255,.65);
+
+    color:#91455e;
+
+    border:1px solid rgba(255,255,255,.9);
+
+    box-shadow:
+        0 8px 20px rgba(80,35,50,.13),
+        inset 0 1px 6px rgba(255,255,255,.9);
+
+    backdrop-filter:blur(15px);
+    -webkit-backdrop-filter:blur(15px);
+}
+
+.nav-btn:active{
+    transform:scale(.92);
+}
+
+
+/* =========================
+   POPUP
+========================= */
+
+.overlay{
+    position:fixed;
+
+    z-index:1000;
+
+    inset:0;
+
+    padding:15px;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    background:rgba(100,40,60,.2);
+
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:
+        opacity .3s ease,
+        visibility .3s ease;
+}
+
+.overlay.show{
+    opacity:1;
+    visibility:visible;
+}
+
+
+/* LETTER */
+
+.letter{
+    position:relative;
+
+    width:min(94vw,650px);
+    height:min(87vh,730px);
+
+    padding:
+        22px 17px 65px;
+
+    border-radius:30px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.88),
+            rgba(255,225,237,.72)
+        );
+
+    border:1px solid white;
+
+    box-shadow:
+        0 30px 75px rgba(70,25,45,.28),
+        inset 0 1px 12px white;
+
+    backdrop-filter:blur(28px);
+    -webkit-backdrop-filter:blur(28px);
+
+    transform:
+        translateY(40px)
+        scale(.88);
+
+    transition:
+        transform .45s
+        cubic-bezier(.2,.8,.2,1);
+
+    overflow:hidden;
+
+    display:flex;
+    flex-direction:column;
+}
+
+.overlay.show .letter{
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+
+/* LETTER EMOJI */
+
+.letter-mail{
+    flex-shrink:0;
+
+    text-align:center;
+
+    font-size:42px;
+
+    line-height:1;
+}
+
+
+/* TITLE */
+
+.letter-title{
+    flex-shrink:0;
+
+    text-align:center;
+
+    color:#b04e6e;
+
+    font-size:clamp(29px,7vw,44px);
+
+    line-height:1;
+
+    margin:7px 0 10px;
+}
+
+
+/* TEXT */
+
+.letter-text{
+    flex:1;
+
+    min-height:0;
+
+    width:100%;
+
+    overflow-y:auto;
+    overflow-x:hidden;
+
+    padding:
+        4px 8px 20px;
+
+    color:#704452;
+
+    font-size:
+        clamp(19px,4.7vw,23px);
+
+    line-height:1.48;
+
+    text-align:left;
+}
+
+.letter-text::-webkit-scrollbar{
+    width:4px;
+}
+
+.letter-text::-webkit-scrollbar-thumb{
+    background:#d48ba1;
+    border-radius:10px;
+}
+
+
+/* EACH PARAGRAPH */
+
+.para{
+    display:block;
+
+    opacity:0;
+
+    transform:translateY(13px);
+
+    margin-bottom:20px;
+
+    animation:
+        showLine
+        .75s
+        ease
+        forwards;
+}
+
+@keyframes showLine{
+
+    from{
+        opacity:0;
+        transform:translateY(13px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+
+/* CLOSE */
+
+.close-btn{
+    position:absolute;
+
+    z-index:50;
+
+    bottom:12px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    border:none;
+
+    padding:7px 20px;
+
+    border-radius:25px;
+
+    font-family:"Caveat",cursive;
+
+    font-size:21px;
+
+    color:#91455e;
+
+    background:rgba(255,255,255,.75);
+
+    border:1px solid white;
+
+    box-shadow:
+        0 7px 18px rgba(80,35,50,.13);
+
+    cursor:pointer;
+}
+
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+    .header h1{
+        font-size:39px;
+    }
+
+    .header p{
+        font-size:19px;
+    }
+
+    .envelopes{
+        gap:7px;
+    }
+
+    .envelope{
+        height:220px;
+        border-radius:20px;
+    }
+
+    .flap{
+        height:105px;
+    }
+
+    .mail{
+        top:67px;
+        font-size:57px;
+    }
+
+    .envelope-info h2{
+        font-size:19px;
+    }
+
+    .envelope-info p{
+        font-size:14px;
+    }
+
+    .note{
+        font-size:19px;
+    }
+
+    .letter{
+        height:87vh;
+    }
+
+    .letter-text{
+        font-size:19px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- DOODLES -->
+
+<div class="doodle d1">♡</div>
+<div class="doodle d2">✦</div>
+<div class="doodle d3">✿</div>
+<div class="doodle d4">🎀</div>
+
+
+<!-- HEADER -->
+
+<header class="header">
+
+    <h1>OUR LITTLE LETTERS 💌</h1>
+
+    <p>
+        three little pieces of my heart 🥹🎀
+    </p>
+
+</header>
+
+
+<!-- MAIN -->
+
+<main class="main">
+
+    <div class="envelopes">
+
+
+        <!-- LETTER 1 -->
+
+        <div class="envelope" id="letter1">
+
+            <div class="flap"></div>
+
+            <div class="left-fold"></div>
+
+            <div class="right-fold"></div>
+
+            <div class="mail">
+                💌
+            </div>
+
+            <div class="envelope-info">
+
+                <h2>
+                    365 DAYS<br>OF US
+                </h2>
+
+                <p>
+                    open me 🥹
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- LETTER 2 -->
+
+        <div class="envelope" id="letter2">
+
+            <div class="flap"></div>
+
+            <div class="left-fold"></div>
+
+            <div class="right-fold"></div>
+
+            <div class="mail">
+                💌
+            </div>
+
+            <div class="envelope-info">
+
+                <h2>
+                    MY<br>PERSONAL ONE
+                </h2>
+
+                <p>
+                    only for uhh 💗
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- LETTER 3 -->
+
+        <div class="envelope" id="letter3">
+
+            <div class="flap"></div>
+
+            <div class="left-fold"></div>
+
+            <div class="right-fold"></div>
+
+            <div class="mail">
+                💌
+            </div>
+
+            <div class="envelope-info">
+
+                <h2>
+                    WHOLE LIFE<br>WITH UHH
+                </h2>
+
+                <p>
+                    forever? 🫠
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="note">
+        open them one by one babyyy 😭💗
+    </div>
+
+
+    <!-- BUTTONS -->
+
+    <div class="buttons">
+
+        <button
+            class="nav-btn"
+            id="backBtn">
+            ← Back
+        </button>
+
+        <button
+            class="nav-btn"
+            id="nextBtn">
+            Next → 💗
+        </button>
+
+    </div>
+
+</main>
+
+
+<!-- =========================
+     POPUP
+========================= -->
+
+<div
+    class="overlay"
+    id="overlay">
+
+    <div class="letter">
+
+        <div class="letter-mail">
+            💌
+        </div>
+
+        <h2
+            class="letter-title"
+            id="letterTitle">
+        </h2>
+
+        <div
+            class="letter-text"
+            id="letterText">
+        </div>
+
+        <button
+            class="close-btn"
+            id="closeBtn">
+            Close ×
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =========================================
+   LETTER DATA
+========================================= */
+
+const letters = [
+
+    {
+        title:"365 DAYS OF US 💗",
+
+        paragraphs:[
+
+`One whole year… 365 days of us 😭💗 and honestly, sometimes I still can't believe how we went from two random idiots who didn't even know what was gonna happen between them to becoming such an important part of each other's lives 🥹🎀. In these 365 days, we've had everythinggg late night talks, stupid fights, random laughs, moments where we understood each other without even saying anything, and obviously those moments where both of us were being complete idiots 😭🤌🏻.`,
+
+`There were days when everything felt perfect and days when things weren't so good, but somehow we still kept choosing each other 🤧💗. And I think that's what makes these 365 days so special to me. It wasn't just about the happy moments, it was about ussss staying, understanding, forgiving, growing and slowly becoming better for each otherrr.😭🤧🫶🏻`,
+
+`When I look back at this year, I don't remember just one moment. I remember so many little versions of us the two idiots who started talking for hours, the two people who slowly caught feelings, the two who fought over the dumbest things 😭, and eventually the two who realised that they didn't want to lose each other 😭💗🤌🏻.`,
+
+`365 days later, you're still the person I want to tell everything to. You're still the person whose message can instantly change my mood, the person I can annoy endlessly, and the person I want beside me when life gets difficult 🥹🫶🏻.`,
+
+`This year gave me memories I'll probably keep replaying in my head forever. And if these 365 days were just the beginning, then I genuinely can't wait to see what the next 365, and the 365 after that, look like with you. 😭🎀`,
+
+`Happy one year to us, babyyy. 💗 One year down… hopefully a lifetime to go. 🫠🫶🏻🎀`
+
+        ]
+    },
+
+
+    {
+        title:"MY PERSONAL ONE 🥹💗",
+
+        paragraphs:[
+
+`Ehm sooo ikk a lot happened with us this year but we still didn't gave up 😭🎀 were together till now, ik we both did mistakes but still we forgive eachother and are still with eachother and ukw that's the only part of maturity in relationship 😭🤧 and we both showed that, like others we didn't fought days and then just broke up, we understood eachother gave eachother a chance 😭 eh Sorryy btw...`,
+
+`So I wanna say is ekaksha babe 😭 I seriously don't want any fight and all between us i just want humare mid me fight hoye bhi toh jaise currently chl rhi hai vaise hoye 😭 likeee ukrr time se naa sona etc 😭🎀 merihhh motiii i promise ye year tumhare liye best yr bana duga 😭🤧 thnxx for always giving me chance...`,
+
+`Mmm ekaksha ywrrr idk what uh did to me that I started loving uhhh soo much bhyi literally I'm so mad that tumne Aisa bola "maine bola letter likho" whatever 🐸 but I'm still writing this to uhh idk why cuz idk why I loveeee uhh soo muchh 😭🫶🏻💗 gussa toh kl bhi kr skta hu 😭 apni bachiii ke saath anniversary thori ruin kru ga.... Cuzz ukkwww ye moments waps nhi aate kbhi 😭`,
+
+`Umm soo kbhi na kbhi dono hi sochte hoge that phele jaisa kyu nhi ho rha tb, phele kitna better tha sb.. etc hn tha better but maybe tum thi us time better like u see if there was pros than cons usse zyada the, but now, ab sb phele se ig lot better hai nd ho jaaye ga 😭🤧 I wishhh hooo jayeee actually`
+
+        ]
+    },
+
+
+    {
+        title:"I WANT A WHOLE LIFE WITH UHH 🎀",
+
+        paragraphs:[
+
+`One year with uhh feels so special, but honestly babyyy, I don't want just one year with you 😭🎀. I want all the years that come after this too. I wanna see us grow together, experience new things together, celebrate every little achievement, travel to places we've only talked about, make stupid memories, fight over the dumbest things and then somehow end up laughing about them 😭🫶🏻.`,
+
+`I wanna be there for your best days and your worst ones. I wanna see every version of uhhhh. The happy you, the angry you, the sleepy yuhhhh 😭💌, the annoying you, literally every version 😭🤌🏻and still choose you every single time.`,
+
+`I wanna celebrate 2 years, 5 years, 10 years and whatever number comes after that with you. I wanna look back one day and realise that all these little moments we were making actually became our whole story 🥹💗.`,
+
+`I don't know what our future is going to look like, but one thing I know is that I want you in it. I want to grow with you, support you, annoy you forever 😭, and make sure you always know how loved you are.`,
+
+`This one year is only the beginning, my love. I don't want a chapter with you.. I want the whole damn book. 😭🎀💗🫶🏻 motiii 😭🎀`
+
+        ]
+    }
+
+];
+
+
+/* =========================================
+   ELEMENTS
+========================================= */
+
+const overlay =
+    document.getElementById("overlay");
+
+const title =
+    document.getElementById("letterTitle");
+
+const text =
+    document.getElementById("letterText");
+
+const closeBtn =
+    document.getElementById("closeBtn");
+
+const backBtn =
+    document.getElementById("backBtn");
+
+const nextBtn =
+    document.getElementById("nextBtn");
+
+
+/* =========================================
+   OPEN LETTER FUNCTION
+========================================= */
+
+function openLetter(number){
+
+    const data =
+        letters[number];
+
+    title.textContent =
+        data.title;
+
+    /* Remove old text */
+
+    text.innerHTML = "";
+
+
+    /* Add every paragraph */
+
+    data.paragraphs.forEach(
+        function(paragraph,index){
+
+            const element =
+                document.createElement("div");
+
+            element.className =
+                "para";
+
+            element.textContent =
+                paragraph;
+
+            element.style.animationDelay =
+                (index * 0.35) + "s";
+
+            text.appendChild(element);
+
+        }
+    );
+
+
+    /* Reset scroll */
+
+    text.scrollTop = 0;
+
+
+    /* Show popup */
+
+    overlay.classList.add("show");
+
+}
+
+
+/* =========================================
+   CLOSE
+========================================= */
+
+function closeLetter(){
+
+    overlay.classList.remove("show");
+
+}
+
+
+/* =========================================
+   ENVELOPE BUTTONS
+========================================= */
+
+document
+    .getElementById("letter1")
+    .addEventListener(
+        "click",
+        function(){
+            openLetter(0);
+        }
+    );
+
+
+document
+    .getElementById("letter2")
+    .addEventListener(
+        "click",
+        function(){
+            openLetter(1);
+        }
+    );
+
+
+document
+    .getElementById("letter3")
+    .addEventListener(
+        "click",
+        function(){
+            openLetter(2);
+        }
+    );
+
+
+/* =========================================
+   CLOSE BUTTON
+========================================= */
+
+closeBtn.addEventListener(
+    "click",
+    function(event){
+
+        event.stopPropagation();
+
+        closeLetter();
+
+    }
+);
+
+
+/* =========================================
+   BACK BUTTON
+========================================= */
+
+backBtn.addEventListener(
+    "click",
+    function(){
+
+        window.location.href =
+            "page3.html";
+
+    }
+);
+
+
+/* =========================================
+   NEXT BUTTON
+========================================= */
+
+nextBtn.addEventListener(
+    "click",
+    function(){
+
+        window.location.href =
+            "page5.html";
+
+    }
+);
+
+
+/* =========================================
+   CLICK OUTSIDE LETTER
+========================================= */
+
+overlay.addEventListener(
+    "click",
+    function(event){
+
+        if(event.target === overlay){
+
+            closeLetter();
+
+        }
+
+    }
+);
+
+
+/* =========================================
+   ESCAPE KEY
+========================================= */
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        if(event.key === "Escape"){
+
+            closeLetter();
+
+        }
+
+    }
+);
+
+</script>
+
+</body>
+</html>

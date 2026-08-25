@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>12 Promises 💗</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap');
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    min-height:100vh;
+    overflow-x:hidden;
+
+    font-family:"Caveat",cursive;
+
+    color:#704452;
+
+    background:
+        radial-gradient(circle at 10% 10%,#fff7fa 0%,transparent 25%),
+        radial-gradient(circle at 90% 90%,#f4bfd0 0%,transparent 30%),
+        linear-gradient(135deg,#ffe9f1,#f8d4e1,#fdecef);
+}
+
+
+/* DOODLES */
+
+.doodle{
+    position:fixed;
+    z-index:0;
+    pointer-events:none;
+
+    color:#c56c88;
+    opacity:.4;
+
+    font-size:30px;
+}
+
+.d1{
+    top:8%;
+    left:6%;
+}
+
+.d2{
+    top:14%;
+    right:7%;
+}
+
+.d3{
+    bottom:13%;
+    left:6%;
+}
+
+.d4{
+    bottom:7%;
+    right:7%;
+}
+
+
+/* HEADER */
+
+.header{
+    position:relative;
+    z-index:5;
+
+    text-align:center;
+
+    padding:
+        18px
+        12px
+        8px;
+}
+
+.header h1{
+    color:#ad4c6c;
+
+    font-size:
+        clamp(34px,8vw,55px);
+
+    line-height:1;
+}
+
+.header p{
+    margin-top:7px;
+
+    color:#976074;
+
+    font-size:21px;
+}
+
+
+/* PROMISE BOARD */
+
+.board{
+    position:relative;
+    z-index:5;
+
+    width:min(94vw,700px);
+
+    margin:8px auto 0;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:13px;
+
+    padding:10px;
+}
+
+
+/* STICKY NOTE */
+
+.note{
+    position:relative;
+
+    min-height:155px;
+
+    padding:
+        20px
+        10px
+        15px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    cursor:pointer;
+
+    color:#79505b;
+
+    border-radius:
+        4px
+        2px
+        6px
+        3px;
+
+    border:1px solid
+        rgba(255,255,255,.65);
+
+    box-shadow:
+        0 12px 18px
+        rgba(90,45,60,.14);
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease;
+
+    -webkit-tap-highlight-color:transparent;
+}
+
+.note:hover{
+    transform:
+        translateY(-7px)
+        rotate(0deg)
+        scale(1.03);
+
+    box-shadow:
+        0 18px 28px
+        rgba(90,45,60,.2);
+}
+
+.note:active{
+    transform:scale(.94);
+}
+
+
+/* NOTE COLORS */
+
+.n1{
+    background:#ffd9e4;
+    transform:rotate(-2deg);
+}
+
+.n2{
+    background:#fff0a8;
+    transform:rotate(2deg);
+}
+
+.n3{
+    background:#dff4d8;
+    transform:rotate(-1deg);
+}
+
+.n4{
+    background:#dceeff;
+    transform:rotate(2deg);
+}
+
+.n5{
+    background:#f0ddff;
+    transform:rotate(-3deg);
+}
+
+.n6{
+    background:#ffe0bd;
+    transform:rotate(1deg);
+}
+
+.n7{
+    background:#ffd9e4;
+    transform:rotate(2deg);
+}
+
+.n8{
+    background:#fff0a8;
+    transform:rotate(-2deg);
+}
+
+.n9{
+    background:#dff4d8;
+    transform:rotate(1deg);
+}
+
+.n10{
+    background:#dceeff;
+    transform:rotate(-2deg);
+}
+
+.n11{
+    background:#f0ddff;
+    transform:rotate(2deg);
+}
+
+.n12{
+    background:#ffe0bd;
+    transform:rotate(-1deg);
+}
+
+
+/* TAPE */
+
+.note::before{
+    content:"";
+
+    position:absolute;
+
+    top:-8px;
+    left:50%;
+
+    width:48px;
+    height:18px;
+
+    transform:
+        translateX(-50%)
+        rotate(-2deg);
+
+    background:
+        rgba(255,255,255,.55);
+
+    box-shadow:
+        0 1px 3px
+        rgba(80,40,50,.1);
+}
+
+
+/* NOTE CONTENT */
+
+.number{
+    position:absolute;
+
+    top:8px;
+    left:10px;
+
+    font-size:17px;
+
+    opacity:.55;
+}
+
+.note-title{
+    font-size:22px;
+
+    color:#884d5d;
+
+    line-height:1.05;
+}
+
+.tap{
+    display:block;
+
+    margin-top:7px;
+
+    font-size:15px;
+
+    opacity:.65;
+}
+
+
+/* BOTTOM */
+
+.bottom{
+    position:relative;
+    z-index:5;
+
+    width:min(94vw,700px);
+
+    margin:
+        5px auto
+        18px;
+
+    text-align:center;
+}
+
+.bottom-text{
+    color:#a04f6b;
+
+    font-size:24px;
+
+    margin-bottom:10px;
+}
+
+.buttons{
+    display:flex;
+
+    justify-content:
+        space-between;
+
+    gap:15px;
+}
+
+.nav-btn{
+    border:none;
+
+    cursor:pointer;
+
+    padding:
+        8px
+        19px;
+
+    border-radius:25px;
+
+    font-family:"Caveat",cursive;
+
+    font-size:21px;
+
+    color:#91455e;
+
+    background:
+        rgba(255,255,255,.65);
+
+    border:
+        1px solid
+        rgba(255,255,255,.95);
+
+    box-shadow:
+        0 8px 20px
+        rgba(80,35,50,.13),
+
+        inset 0 1px 7px
+        rgba(255,255,255,.95);
+
+    backdrop-filter:blur(15px);
+    -webkit-backdrop-filter:blur(15px);
+
+    -webkit-tap-highlight-color:transparent;
+}
+
+.nav-btn:active{
+    transform:scale(.92);
+}
+
+
+/* =========================
+   POPUP
+========================= */
+
+.overlay{
+    position:fixed;
+
+    z-index:1000;
+
+    inset:0;
+
+    padding:15px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    background:
+        rgba(95,35,55,.22);
+
+    backdrop-filter:blur(17px);
+    -webkit-backdrop-filter:blur(17px);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:
+        opacity .3s ease,
+        visibility .3s ease;
+}
+
+.overlay.show{
+    opacity:1;
+    visibility:visible;
+}
+
+
+/* GLASS CARD */
+
+.promise-card{
+    position:relative;
+
+    width:min(92vw,580px);
+
+    height:min(75vh,520px);
+
+    padding:
+        25px
+        20px
+        70px;
+
+    border-radius:32px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.88),
+            rgba(255,218,231,.7)
+        );
+
+    border:
+        1px solid
+        rgba(255,255,255,.95);
+
+    box-shadow:
+        0 30px 80px
+        rgba(65,25,45,.28),
+
+        inset 0 1px 12px
+        rgba(255,255,255,.95);
+
+    backdrop-filter:blur(30px);
+    -webkit-backdrop-filter:blur(30px);
+
+    transform:
+        translateY(40px)
+        scale(.82);
+
+    transition:
+        transform .45s
+        cubic-bezier(.2,.8,.2,1);
+
+    display:flex;
+    flex-direction:column;
+
+    overflow:hidden;
+}
+
+.overlay.show .promise-card{
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+
+/* POPUP TITLE */
+
+.promise-emoji{
+    text-align:center;
+
+    font-size:48px;
+
+    line-height:1;
+}
+
+.promise-title{
+    text-align:center;
+
+    color:#ad4d6c;
+
+    font-size:
+        clamp(28px,7vw,42px);
+
+    margin:
+        8px 0
+        12px;
+
+    line-height:1;
+}
+
+
+/* PROMISE TEXT */
+
+.promise-text{
+    flex:1;
+
+    min-height:0;
+
+    overflow-y:auto;
+
+    padding:
+        5px
+        10px
+        15px;
+
+    text-align:center;
+
+    color:#704452;
+
+    font-size:
+        clamp(21px,5vw,27px);
+
+    line-height:1.45;
+}
+
+.promise-text::-webkit-scrollbar{
+    width:4px;
+}
+
+.promise-text::-webkit-scrollbar-thumb{
+    background:#d58ba1;
+
+    border-radius:10px;
+}
+
+
+/* FADE-IN */
+
+.promise-line{
+    opacity:0;
+
+    transform:
+        translateY(14px);
+
+    animation:
+        lineIn
+        .7s
+        ease
+        forwards;
+}
+
+@keyframes lineIn{
+
+    from{
+        opacity:0;
+
+        transform:
+            translateY(14px);
+    }
+
+    to{
+        opacity:1;
+
+        transform:
+            translateY(0);
+    }
+
+}
+
+
+/* CLOSE */
+
+.close-btn{
+    position:absolute;
+
+    bottom:13px;
+    left:50%;
+
+    transform:
+        translateX(-50%);
+
+    border:none;
+
+    padding:
+        7px 22px;
+
+    border-radius:25px;
+
+    font-family:"Caveat",cursive;
+
+    font-size:21px;
+
+    color:#91455e;
+
+    background:
+        rgba(255,255,255,.75);
+
+    border:
+        1px solid white;
+
+    box-shadow:
+        0 7px 18px
+        rgba(80,35,50,.13);
+
+    cursor:pointer;
+}
+
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+    .header h1{
+        font-size:38px;
+    }
+
+    .header p{
+        font-size:19px;
+    }
+
+    .board{
+        gap:8px;
+        padding:7px;
+    }
+
+    .note{
+        min-height:142px;
+        padding:18px 6px 10px;
+    }
+
+    .note-title{
+        font-size:19px;
+    }
+
+    .tap{
+        font-size:13px;
+    }
+
+    .number{
+        font-size:15px;
+    }
+
+    .bottom-text{
+        font-size:21px;
+    }
+
+    .promise-card{
+        height:78vh;
+    }
+
+    .promise-text{
+        font-size:21px;
+    }
+}
+
+@media(max-width:380px){
+
+    .board{
+        gap:5px;
+    }
+
+    .note{
+        min-height:128px;
+    }
+
+    .note-title{
+        font-size:17px;
+    }
+
+    .tap{
+        font-size:12px;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- DOODLES -->
+
+<div class="doodle d1">♡</div>
+<div class="doodle d2">✦</div>
+<div class="doodle d3">✿</div>
+<div class="doodle d4">🎀</div>
+
+
+<!-- HEADER -->
+
+<header class="header">
+
+    <h1>
+        12 PROMISES FOR US 💗
+    </h1>
+
+    <p>
+        for our 12 month anniversary babeee 🤧🎀
+    </p>
+
+</header>
+
+
+<!-- NOTES -->
+
+<main class="board">
+
+
+    <div class="note n1" data-number="0">
+
+        <span class="number">01</span>
+
+        <div>
+            <div class="note-title">
+                I'll always be there 🫶🏻
+            </div>
+
+            <span class="tap">
+                tap me 💗
+            </span>
+        </div>
+
+    </div>
+
+
+    <div class="note n2" data-number="1">
+
+        <span class="number">02</span>
+
+        <div>
+            <div class="note-title">
+                I'll become better ✨
+            </div>
+
+            <span class="tap">
+                open me 🎀
+            </span>
+        </div>
+
+    </div>
+
+
+    <div class="note n3" data-number="2">
+
+        <span class="number">03</span>
+
+        <div>
+            <div class="note-title">
+                No unnecessary fights 🥹
+            </div>
+
+            <span class="tap">
+                tap tap 🤧
+            </span>
+        </div>
+
+    </div>
+
+
+    <div class="note n4" data-number="3">
+
+        <span class="number">04</span>
+
+        <div>
+            <div class="note-title">
+                No lying 🫶🏻
+            </div>
+
+            <span class="tap">
+                except... hehe 🐸
+            </span>
+        </div>
+
+    </div>
+
+
+    <div class="note n5" data-number="4">
+
+        <span class="number">05</span>
+
+        <div>
+            <div class="note-title">
+                Never make uhh cry 💗
+            </div>
+
+            <span class="tap">
+                open me 😭
+            </span>
+        </div>
+
+    </div>
+
+
+    <div class="note n6" data-number="5">
+
+        <span class="number">06</span>
+
+        <div>
+            <div class="note-title">
+                Whole life with uhh 🎀
+            </div>
+
+            <span class="tap">
+                tap me 💌
+            </span>
+        </div>
+
+    </div>
+
+
+    <div class="note n7" data-number="6">
+
+        <span class="number">07</span>
+
+        <div>
+            <div class="note-title">
+                Always take your stand 🤧
+            </div>
+
+            <span class="tap">
+                open 💗
+            </span>
+        </div>
+
+    </div>
+
+
+    <div class="note n8" data-number="7">
+
+        <span class="number">08</span>
+
+        <div>
+            <div class="note-title">
+                Keep uhh happy 😭
+            </div>
+
+            <span class="tap">
+                tap tap 🎀
+            </span>
+        </div>
+
+    </div>
+
+
+    <div class="note n9" data-number="8">
+
+        <span class="number">09</span>
+
+        <div>
+            <div class="note-title">
+                Treat uhh the best 👑
+            </div>
+
+            <span class="tap">
+                open me 🤧
+            </span>
+        </div>
+
+    </div>
+
+
+    <div class="note n10" data-number="9">
+
+        <span class="number">10</span>
+
+        <div>
+            <div class="note-title">
+                No old mistakes 🫶🏻
+            </div>
+
+            <span class="tap">
+                tap me 💗
+            </span>
+        </div>
+
+    </div>
+
+
+    <div class="note n11" data-number="10">
+
+        <span class="number">11</span>
+
+        <div>
+            <div class="note-title">
+                Love & take care 😭
+            </div>
+
+            <span class="tap">
+                open me 🎀
+            </span>
+        </div>
+
+    </div>
+
+
+    <div class="note n12" data-number="11">
+
+        <span class="number">12</span>
+
+        <div>
+            <div class="note-title">
+                Always my Princess 👑
+            </div>
+
+            <span class="tap">
+                tap me 💌
+            </span>
+        </div>
+
+    </div>
+
+
+</main>
+
+
+<!-- BOTTOM -->
+
+<section class="bottom">
+
+    <div class="bottom-text">
+        These promises will not break. 😭🫶🏻🎀
+    </div>
+
+    <div class="buttons">
+
+        <button
+            class="nav-btn"
+            id="backBtn">
+            ← Back
+        </button>
+
+        <button
+            class="nav-btn"
+            id="nextBtn">
+            Next → 💗
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- POPUP -->
+
+<div
+    class="overlay"
+    id="overlay">
+
+    <div class="promise-card">
+
+        <div class="promise-emoji">
+            💌
+        </div>
+
+        <h2
+            class="promise-title"
+            id="promiseTitle">
+        </h2>
+
+        <div
+            class="promise-text"
+            id="promiseText">
+        </div>
+
+        <button
+            class="close-btn"
+            id="closeBtn">
+            Close ×
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =========================================
+   PROMISES
+========================================= */
+
+const promises = [
+
+`I promise not to ever break your heart again 😭🫶🏻 and I'll always be there for uhh.`,
+
+`I promise I'll become the version of me uhh need — the best version of myself — and I'll always support uhhh no matter what happens. 😭✨`,
+
+`I promise to never hurt uhhh again and I'll never argue with uhh without any reason. 🫶🏻`,
+
+`I promise to never lie to uhhh. (Except 🫶🏻 “aaj jaldi so gaya tha”, “khana kha liya hai” etc hehe 🤧)`,
+
+`I promise uhhhh I'll never make uhh cry, never make uhh disappointed, and I'll always be there with uhhhhh. 🤧🎀`,
+
+`I promise uhhhh that I'll continue my whole life with uhhh. I'll listen to uhh every time, and tumne kuch mana kiya toh vo nhi kru ga 😭😭`,
+
+`I promise to uhh that I'll always take your stand in front of everyone, even if you're wrong. 🤧`,
+
+`I promise to uhhh that I'll always keep uhh as happy as possible, and tumhari har baat sunu ga. 😭`,
+
+`I promise tooo uhhh I'll always treat uhh theee best, so good that others would be jealous of uhhhh. 😭🤧`,
+
+`I promise tooo uhhh that I'll never make the old mistakes again. 🫶🏻`,
+
+`I promise to uhhh that I will loveee uhh a lottt and take care of uhhh aa lotttt. 😭🤧💗`,
+
+`I promise toooo uhhhh that I'll always keep uhh as my Princess. 😭🎀👑`
+
+];
+
+
+/* =========================================
+   ELEMENTS
+========================================= */
+
+const overlay =
+    document.getElementById("overlay");
+
+const promiseTitle =
+    document.getElementById("promiseTitle");
+
+const promiseText =
+    document.getElementById("promiseText");
+
+const closeBtn =
+    document.getElementById("closeBtn");
+
+const backBtn =
+    document.getElementById("backBtn");
+
+const nextBtn =
+    document.getElementById("nextBtn");
+
+const notes =
+    document.querySelectorAll(".note");
+
+
+/* =========================================
+   OPEN PROMISE
+========================================= */
+
+function openPromise(index){
+
+    promiseTitle.textContent =
+        "PROMISE #" + (index + 1);
+
+    promiseText.innerHTML = "";
+
+
+    /*
+       Split the promise into words and
+       create several animated chunks.
+    */
+
+    const words =
+        promises[index].split(" ");
+
+    let currentLine = "";
+
+    const lines = [];
+
+
+    /*
+       Make approximately 7-12 word
+       chunks so the text fades in
+       gradually.
+    */
+
+    words.forEach(function(word,i){
+
+        currentLine +=
+            (currentLine ? " " : "") +
+            word;
+
+        if(
+            currentLine.length > 55 ||
+            i === words.length - 1
+        ){
+
+            lines.push(currentLine);
+
+            currentLine = "";
+
+        }
+
+    });
+
+
+    lines.forEach(function(line,index){
+
+        const div =
+            document.createElement("div");
+
+        div.className =
+            "promise-line";
+
+        div.textContent =
+            line;
+
+        div.style.animationDelay =
+            (index * 0.25) + "s";
+
+        promiseText.appendChild(div);
+
+    });
+
+
+    promiseText.scrollTop = 0;
+
+    overlay.classList.add("show");
+
+}
+
+
+/* =========================================
+   CLOSE
+========================================= */
+
+function closePromise(){
+
+    overlay.classList.remove("show");
+
+}
+
+
+/* =========================================
+   NOTE CLICKS
+========================================= */
+
+notes.forEach(function(note){
+
+    note.addEventListener(
+        "click",
+        function(){
+
+            const index =
+                Number(
+                    note.getAttribute(
+                        "data-number"
+                    )
+                );
+
+            openPromise(index);
+
+        }
+    );
+
+});
+
+
+/* =========================================
+   CLOSE BUTTON
+========================================= */
+
+closeBtn.addEventListener(
+    "click",
+    function(event){
+
+        event.stopPropagation();
+
+        closePromise();
+
+    }
+);
+
+
+/* =========================================
+   CLICK OUTSIDE
+========================================= */
+
+overlay.addEventListener(
+    "click",
+    function(event){
+
+        if(
+            event.target === overlay
+        ){
+
+            closePromise();
+
+        }
+
+    }
+);
+
+
+/* =========================================
+   BACK
+========================================= */
+
+backBtn.addEventListener(
+    "click",
+    function(){
+
+        window.location.href =
+            "page4.html";
+
+    }
+);
+
+
+/* =========================================
+   NEXT
+========================================= */
+
+nextBtn.addEventListener(
+    "click",
+    function(){
+
+        window.location.href =
+            "page6.html";
+
+    }
+);
+
+
+/* =========================================
+   ESC KEY
+========================================= */
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        if(event.key === "Escape"){
+
+            closePromise();
+
+        }
+
+    }
+);
+
+</script>
+
+</body>
+</html>

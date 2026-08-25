@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>What You Mean To Me 💗</title>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap');
+
+
+/* =========================
+   BASIC RESET
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+
+body{
+
+    min-height:100vh;
+
+    overflow:hidden;
+
+    font-family:"Caveat", cursive;
+
+    color:#704452;
+
+    background:
+
+        radial-gradient(
+            circle at 12% 12%,
+            rgba(255,255,255,.9),
+            transparent 25%
+        ),
+
+        radial-gradient(
+            circle at 90% 85%,
+            rgba(239,168,192,.55),
+            transparent 30%
+        ),
+
+        linear-gradient(
+            135deg,
+            #ffeaf1,
+            #f8d7e2,
+            #fcecf1
+        );
+}
+
+
+/* =========================
+   FLOATING DOODLES
+========================= */
+
+.doodle{
+
+    position:fixed;
+
+    z-index:0;
+
+    pointer-events:none;
+
+    color:#c66b88;
+
+    opacity:.38;
+
+    font-size:34px;
+
+    animation:
+        float 4s ease-in-out infinite;
+}
+
+
+.d1{
+
+    top:8%;
+
+    left:7%;
+
+    transform:rotate(-15deg);
+}
+
+
+.d2{
+
+    top:18%;
+
+    right:7%;
+
+    animation-delay:.7s;
+}
+
+
+.d3{
+
+    bottom:13%;
+
+    left:7%;
+
+    animation-delay:1.2s;
+}
+
+
+.d4{
+
+    bottom:8%;
+
+    right:8%;
+
+    animation-delay:1.8s;
+}
+
+
+.d5{
+
+    top:48%;
+
+    left:3%;
+
+    font-size:23px;
+
+    animation-delay:2s;
+}
+
+
+.d6{
+
+    top:55%;
+
+    right:3%;
+
+    font-size:22px;
+
+    animation-delay:1.5s;
+}
+
+
+@keyframes float{
+
+    0%,100%{
+
+        transform:
+            translateY(0)
+            rotate(-5deg);
+    }
+
+    50%{
+
+        transform:
+            translateY(-10px)
+            rotate(5deg);
+    }
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header{
+
+    position:relative;
+
+    z-index:3;
+
+    text-align:center;
+
+    padding:
+        18px 15px 8px;
+}
+
+
+.header h1{
+
+    color:#b34f70;
+
+    font-size:
+        clamp(38px,9vw,58px);
+
+    line-height:1;
+}
+
+
+.header p{
+
+    margin-top:6px;
+
+    color:#916074;
+
+    font-size:21px;
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+.main{
+
+    position:relative;
+
+    z-index:2;
+
+    width:
+        min(94vw,680px);
+
+    height:
+        calc(100vh - 120px);
+
+    margin:auto;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+}
+
+
+/* =========================
+   LIQUID GLASS CARD
+========================= */
+
+.glass-card{
+
+    position:relative;
+
+    width:100%;
+
+    height:
+        calc(100vh - 205px);
+
+    min-height:350px;
+
+    padding:
+        27px 24px 20px;
+
+    border-radius:28px;
+
+
+    background:
+
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.66),
+            rgba(255,224,234,.38)
+        );
+
+
+    border:
+
+        1px solid
+        rgba(255,255,255,.85);
+
+
+    box-shadow:
+
+        0 25px 60px
+        rgba(105,45,65,.17),
+
+        inset 0 1px 8px
+        rgba(255,255,255,.95),
+
+        inset 0 -1px 5px
+        rgba(255,255,255,.35);
+
+
+    backdrop-filter:
+        blur(22px);
+
+    -webkit-backdrop-filter:
+        blur(22px);
+
+
+    overflow:hidden;
+
+
+    animation:
+
+        cardAppear
+        .9s
+        cubic-bezier(.2,.8,.2,1);
+}
+
+
+@keyframes cardAppear{
+
+    0%{
+
+        opacity:0;
+
+        transform:
+            translateY(35px)
+            scale(.92);
+    }
+
+    100%{
+
+        opacity:1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+/* =========================
+   GLASS SHINE
+========================= */
+
+.glass-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:-120px;
+
+    left:-90px;
+
+    width:190px;
+
+    height:360px;
+
+    background:
+        rgba(255,255,255,.22);
+
+    transform:
+        rotate(25deg);
+
+    filter:blur(5px);
+
+    pointer-events:none;
+}
+
+
+/* =========================
+   TITLE
+========================= */
+
+.card-title{
+
+    position:relative;
+
+    z-index:2;
+
+    text-align:center;
+
+    color:#b04e6e;
+
+    font-size:
+        clamp(32px,7vw,46px);
+
+    line-height:1;
+
+    margin-bottom:12px;
+}
+
+
+/* =========================
+   TEXT AREA
+========================= */
+
+.text-area{
+
+    position:relative;
+
+    z-index:2;
+
+    height:
+        calc(100% - 65px);
+
+    overflow-y:auto;
+
+    padding:
+        5px 8px 30px;
+
+    font-size:
+        clamp(19px,4.8vw,24px);
+
+    line-height:1.48;
+
+    text-align:left;
+
+    scroll-behavior:auto;
+}
+
+
+/* scrollbar */
+
+.text-area::-webkit-scrollbar{
+
+    width:4px;
+}
+
+
+.text-area::-webkit-scrollbar-thumb{
+
+    background:#d48ba1;
+
+    border-radius:10px;
+}
+
+
+/* =========================
+   LINE-BY-LINE FADE
+========================= */
+
+.fade-line{
+
+    opacity:0;
+
+    transform:
+        translateY(12px);
+
+    animation:
+        softFade
+        .85s
+        ease
+        forwards;
+
+    margin-bottom:19px;
+}
+
+
+@keyframes softFade{
+
+    0%{
+
+        opacity:0;
+
+        transform:
+            translateY(12px);
+    }
+
+    100%{
+
+        opacity:1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* =========================
+   SPECIAL FINAL LINES
+========================= */
+
+.fade-line:nth-last-child(2){
+
+    text-align:center;
+
+    font-size:
+        clamp(25px,6vw,34px);
+
+    color:#b34f70;
+
+    font-weight:600;
+}
+
+
+.fade-line:last-child{
+
+    text-align:right;
+
+    font-size:28px;
+
+    color:#a84d69;
+
+    margin-top:5px;
+
+    margin-bottom:10px;
+}
+
+
+/* =========================
+   BUTTON AREA
+========================= */
+
+.buttons{
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-top:14px;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+button{
+
+    border:none;
+
+    font-family:"Caveat",cursive;
+
+    font-size:23px;
+
+    padding:
+        9px 20px;
+
+    border-radius:25px;
+
+    cursor:pointer;
+
+    -webkit-tap-highlight-color:transparent;
+
+    transition:
+
+        transform .18s ease,
+
+        box-shadow .18s ease;
+}
+
+
+button:active{
+
+    transform:
+        scale(.92);
+}
+
+
+/* BACK */
+
+.back-btn{
+
+    color:#974d66;
+
+    background:
+        rgba(255,255,255,.82);
+
+    box-shadow:
+
+        0 6px 18px
+        rgba(80,35,50,.13);
+}
+
+
+/* CONTINUE */
+
+.continue-btn{
+
+    color:#91455e;
+
+    background:
+
+        rgba(255,255,255,.40);
+
+    border:
+
+        1px solid
+        rgba(255,255,255,.85);
+
+    backdrop-filter:
+        blur(15px);
+
+    -webkit-backdrop-filter:
+        blur(15px);
+
+    box-shadow:
+
+        0 8px 22px
+        rgba(90,40,60,.15),
+
+        inset 0 1px 5px
+        rgba(255,255,255,.9);
+}
+
+
+.continue-btn:hover{
+
+    box-shadow:
+
+        0 12px 28px
+        rgba(90,40,60,.22),
+
+        inset 0 1px 5px
+        rgba(255,255,255,1);
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:600px){
+
+    .header{
+
+        padding-top:14px;
+    }
+
+
+    .header h1{
+
+        font-size:40px;
+    }
+
+
+    .header p{
+
+        font-size:19px;
+    }
+
+
+    .glass-card{
+
+        height:
+            calc(100vh - 200px);
+
+        padding:
+            24px 17px 18px;
+
+        border-radius:23px;
+    }
+
+
+    .card-title{
+
+        font-size:34px;
+    }
+
+
+    .text-area{
+
+        font-size:19px;
+
+        line-height:1.43;
+
+        padding-left:4px;
+
+        padding-right:4px;
+    }
+
+
+    button{
+
+        font-size:21px;
+
+        padding:
+            8px 17px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     DOODLES
+========================= -->
+
+<div class="doodle d1">♡</div>
+
+<div class="doodle d2">✦</div>
+
+<div class="doodle d3">✿</div>
+
+<div class="doodle d4">🎀</div>
+
+<div class="doodle d5">♡</div>
+
+<div class="doodle d6">✧</div>
+
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header class="header">
+
+    <h1>
+        WHAT YOU MEAN TO ME 💗
+    </h1>
+
+    <p>
+        something I don't say enough 🥹🎀
+    </p>
+
+</header>
+
+
+
+<!-- =========================
+     MAIN
+========================= -->
+
+<main class="main">
+
+
+    <!-- GLASS LETTER -->
+
+    <section class="glass-card">
+
+
+        <h2 class="card-title">
+
+            Ekakshaaa 🥹💗
+
+        </h2>
+
+
+        <div
+            class="text-area"
+            id="textArea"
+        ></div>
+
+
+    </section>
+
+
+
+    <!-- BUTTONS -->
+
+    <div class="buttons">
+
+
+        <button
+            class="back-btn"
+            onclick="goBack()"
+        >
+
+            ← Back
+
+        </button>
+
+
+        <button
+            class="continue-btn"
+            onclick="goNext()"
+        >
+
+            Continue → 💌
+
+        </button>
+
+
+    </div>
+
+
+</main>
+
+
+
+<script>
+
+
+/* =========================
+   PAGE 3 MESSAGE
+========================= */
+
+const message = [
+
+`Ekakshaaa, sometimes I genuinely sit and think about how crazy everything is 😭💗. Likeee how did one random “hiiii” turn into something that became such a huge part of my life? 🤧🎀 You were literally just another person at first, and now somehow you're the person I look for every single day. You're the first person I wanna tell things to, the person I wanna talk to when something good happens, the person I wanna annoy when I'm bored 😭🤌🏻, and even the person I wanna fight with over the most stupid things possible 😭😭.`,
+
+`I don't think you realise how much you've changed my everyday life. There are so many small things that remind me of you now. A random song, a certain time at night, some stupid meme, something I see outside, literally anything can make me think “I need to tell Ekaksha this” 😭🫶🏻. And honestly, that's when I realise how deeply you've become a part of my life. It's not even something I consciously do anymore, it just happens.`,
+
+`You've seen so many different versions of me this year. The happy me, the irritated me, the stupid me, the overthinking me, the version of me who sometimes doesn't even know what he's doing (fs neend me) 😭🤧. And somehow, even after seeing all of that, you're still here. You still give me chances, you still talk to me, you still choose to stay. And I don't think I'll ever be able to properly explain how much that means to me 🥹💗.`,
+
+`We've had moments where everything felt perfect, and we've also had moments where things felt completely messed up. We've fought, misunderstood each other, got angry, said things we probably shouldn't have 😭🥀, but somehow we always found our way back to each other. And maybe that's what makes what we have even more special to me. Because loving someone isn't just about being there when everything is perfect. It's also about choosing them when things aren't perfect, understanding them when you're angry, forgiving them when they make mistakes and trying again 🤧🫶🏻.`,
+
+`And Ekaksha, I genuinely love all the little things about you. I love your random talks, your stupidness, your way of getting annoyed 😭🎀, the way you can somehow make me laugh even when I'm not in the mood, and even those little things that probably annoy me sometimes but I'd secretly miss if they weren't there 😭😭✨. I love how comfortable we've become with each other. We can literally go from the most serious conversation to absolute nonsense in like two seconds 😭🤌🏻.`,
+
+`You became my comfort without even trying. Talking to you feels different. Even on the worst days, somehow a conversation with you makes everything feel a little lighter. And I don't know how you did that, but I'm genuinely so grateful that you did 😭💗.`,
+
+`Sometimes I wonder what my life would've been like if I never sent that “hiiii” that day. Maybe we would've just remained two random people who never knew how important we could become to each other. And broooo 😭, I genuinely don't wanna imagine that. Because this year gave me something I didn't even know I needed you.`,
+
+`I know I don't always say everything properly. Sometimes I joke around when I should probably be serious, sometimes I get angry over stupid things, sometimes I fail to express what I'm actually feeling 😭🤧. But behind all of that, there's one thing I'm completely sure about..`,
+
+`I love you. 🥹💗`,
+
+`And I'm genuinely grateful that out of all the people in this world, somehow our paths crossed. I'm grateful for that first “hiiii”, for all those hours of talking, for every stupid fight, every laugh, every late night conversation, every apology, every “sorry”, every “goodnight”, every random moment and every memory we've made together 😭🎀.`,
+
+`This year wasn't perfect. We weren't perfect. But it was ours. And that's what makes it so special to me. 🫶🏻`,
+
+`So if you ever wonder what place you have in my life, just remember this`,
+
+`You aren't just a part of my life anymore, Ekaksha. You became one of the reasons I love my life a little more. 😭💗🎀🫶🏻`,
+
+`Hehe moti`
+
+];
+
+
+
+/* =========================
+   TEXT AREA
+========================= */
+
+const textArea =
+    document.getElementById("textArea");
+
+
+
+/* =========================
+   CREATE PARAGRAPHS
+========================= */
+
+message.forEach((paragraph, index) => {
+
+
+    const line =
+        document.createElement("div");
+
+
+    line.className =
+        "fade-line";
+
+
+    line.textContent =
+        paragraph;
+
+
+    /*
+       Each paragraph fades in
+       after the previous one.
+    */
+
+    line.style.animationDelay =
+        `${index * 0.32}s`;
+
+
+    textArea.appendChild(line);
+
+});
+
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+function goBack(){
+
+    window.location.href =
+        "page2.html";
+
+}
+
+
+function goNext(){
+
+    window.location.href =
+        "page4.html";
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>

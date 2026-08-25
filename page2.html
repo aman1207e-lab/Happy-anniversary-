@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Our Little Story 💗</title>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap');
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    min-height:100vh;
+    background:
+    radial-gradient(circle at 10% 10%,#fff8fb,transparent 25%),
+    radial-gradient(circle at 90% 90%,#f1c1d1,transparent 30%),
+    #f7dfe7;
+
+    font-family:"Caveat",cursive;
+    color:#67424f;
+
+    overflow-x:hidden;
+}
+
+
+/* DOODLES */
+
+.doodle{
+    position:fixed;
+    color:#c46c87;
+    opacity:.45;
+    font-size:35px;
+    pointer-events:none;
+}
+
+.d1{
+    top:8%;
+    left:5%;
+}
+
+.d2{
+    top:18%;
+    right:6%;
+}
+
+.d3{
+    bottom:15%;
+    left:6%;
+}
+
+.d4{
+    bottom:8%;
+    right:7%;
+}
+
+
+/* HEADER */
+
+.header{
+    text-align:center;
+    padding:25px 15px 10px;
+}
+
+.header h1{
+    font-size:
+    clamp(42px,10vw,65px);
+
+    color:#bd5072;
+
+    line-height:1;
+}
+
+.header p{
+    font-size:25px;
+    color:#89576a;
+}
+
+
+/* SCRAPBOOK */
+
+.book-container{
+
+    width:100%;
+
+    max-width:600px;
+
+    height:700px;
+
+    margin:15px auto 0;
+
+    padding:10px;
+
+    position:relative;
+}
+
+
+/* BOOK */
+
+.book{
+
+    width:100%;
+    height:100%;
+
+    background:#b96b83;
+
+    border-radius:
+    18px 30px 30px 18px;
+
+    padding:18px;
+
+    box-shadow:
+    0 25px 45px
+    rgba(80,40,55,.25);
+
+    position:relative;
+}
+
+
+/* BOOK BORDER */
+
+.book:before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:10px;
+
+    border:
+    2px dashed
+    rgba(255,255,255,.5);
+
+    border-radius:
+    13px 25px 25px 13px;
+
+    pointer-events:none;
+}
+
+
+/* SPINE */
+
+.spine{
+
+    position:absolute;
+
+    left:0;
+    top:0;
+    bottom:0;
+
+    width:20px;
+
+    background:
+    linear-gradient(
+    to right,
+    rgba(65,25,40,.45),
+    rgba(255,255,255,.2),
+    rgba(65,25,40,.25)
+    );
+
+    border-radius:
+    18px 0 0 18px;
+}
+
+
+/* PAGE */
+
+.scrap-page{
+
+    display:none;
+
+    position:absolute;
+
+    left:38px;
+    right:18px;
+    top:18px;
+    bottom:18px;
+
+    background:#fffaf5;
+
+    border-radius:
+    7px 22px 22px 7px;
+
+    box-shadow:
+    0 8px 18px
+    rgba(70,35,48,.2);
+
+    overflow:hidden;
+}
+
+
+/* ACTIVE PAGE */
+
+.scrap-page.active{
+    display:block;
+}
+
+
+/* PAPER LINES */
+
+.scrap-page:after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+    repeating-linear-gradient(
+        to bottom,
+        transparent 0px,
+        transparent 31px,
+        rgba(193,128,148,.12) 32px
+    );
+
+    pointer-events:none;
+}
+
+
+/* TAPE */
+
+.tape{
+
+    position:absolute;
+
+    top:12px;
+    left:50%;
+
+    transform:
+    translateX(-50%)
+    rotate(-2deg);
+
+    width:105px;
+    height:28px;
+
+    background:
+    rgba(239,178,196,.8);
+
+    z-index:5;
+}
+
+
+/* PAGE NUMBER */
+
+.number{
+
+    position:absolute;
+
+    right:20px;
+    top:15px;
+
+    font-size:23px;
+
+    color:#b96d83;
+
+    z-index:5;
+}
+
+
+/* CONTENT */
+
+.content{
+
+    height:100%;
+
+    overflow-y:auto;
+
+    padding:
+    48px 22px 100px;
+
+    position:relative;
+
+    z-index:2;
+}
+
+
+/* TITLE */
+
+.title{
+
+    text-align:center;
+
+    font-size:
+    clamp(35px,8vw,50px);
+
+    line-height:1;
+
+    color:#bb5071;
+
+    margin-bottom:22px;
+}
+
+
+/* TEXT */
+
+.story{
+
+    font-size:
+    clamp(20px,5vw,25px);
+
+    line-height:1.42;
+}
+
+.story p{
+    margin-bottom:18px;
+}
+
+.highlight{
+    color:#c34d70;
+    font-weight:700;
+}
+
+
+/* PHOTOS */
+
+.photos{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    gap:20px;
+}
+
+.polaroid{
+
+    width:88%;
+
+    max-width:320px;
+
+    padding:
+    9px 9px 13px;
+
+    background:white;
+
+    box-shadow:
+    0 8px 18px
+    rgba(60,30,40,.18);
+}
+
+.polaroid:nth-child(1){
+    transform:rotate(-3deg);
+}
+
+.polaroid:nth-child(2){
+    transform:rotate(2deg);
+}
+
+.polaroid:nth-child(3){
+    transform:rotate(-2deg);
+}
+
+.photo{
+
+    height:110px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:
+    repeating-linear-gradient(
+        45deg,
+        #f4d5e0 0,
+        #f4d5e0 12px,
+        #fdebf1 12px,
+        #fdebf1 24px
+    );
+
+    color:#a9677c;
+
+    font-size:22px;
+} 
+.photo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
+
+.polaroid p{
+
+    text-align:center;
+
+    font-size:23px;
+
+    margin-top:8px;
+}
+
+
+/* 365 */
+
+.days{
+
+    text-align:center;
+
+    font-size:115px;
+
+    color:rgba(190,75,110,.13);
+
+    line-height:.8;
+
+    margin:
+    10px 0 25px;
+}
+
+
+/* BUTTON AREA */
+
+.buttons{
+
+    position:absolute;
+
+    left:38px;
+    right:18px;
+
+    bottom:15px;
+
+    height:45px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    z-index:20;
+}
+
+
+/* BUTTON */
+
+button{
+
+    border:none;
+
+    font-family:"Caveat",cursive;
+
+    font-size:23px;
+
+    padding:
+    7px 18px;
+
+    border-radius:25px;
+
+    cursor:pointer;
+
+    -webkit-tap-highlight-color:transparent;
+}
+
+
+/* BACK */
+
+.back{
+
+    background:
+    rgba(255,255,255,.85);
+
+    color:#9d4c67;
+
+    box-shadow:
+    0 4px 10px
+    rgba(80,40,50,.12);
+}
+
+
+/* CONTINUE */
+
+.continue{
+
+    background:
+    rgba(255,255,255,.4);
+
+    backdrop-filter:
+    blur(12px);
+
+    -webkit-backdrop-filter:
+    blur(12px);
+
+    border:
+    1px solid
+    rgba(255,255,255,.8);
+
+    color:#91455e;
+
+    box-shadow:
+    0 7px 20px
+    rgba(90,40,60,.15),
+
+    inset 0 1px 3px
+    rgba(255,255,255,.8);
+}
+
+
+/* BUTTON PRESS */
+
+button:active{
+    transform:scale(.94);
+}
+
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+    .book-container{
+        height:690px;
+        padding:8px;
+    }
+
+    .book{
+        padding:15px;
+    }
+
+    .scrap-page{
+        left:35px;
+        right:15px;
+        top:15px;
+        bottom:15px;
+    }
+
+    .buttons{
+        left:35px;
+        right:15px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- DOODLES -->
+
+<div class="doodle d1">♡</div>
+<div class="doodle d2">✦</div>
+<div class="doodle d3">✿</div>
+<div class="doodle d4">🎀</div>
+
+
+<!-- HEADER -->
+
+<div class="header">
+
+    <h1>
+        OUR LITTLE STORY 🥹💗
+    </h1>
+
+    <p>
+        from two idiots to us ♡
+    </p>
+
+</div>
+
+
+<!-- BOOK -->
+
+<div class="book-container">
+
+<div class="book">
+
+<div class="spine"></div>
+
+
+<!-- ================================= -->
+<!-- PAGE 1 -->
+<!-- ================================= -->
+
+<div
+class="scrap-page active"
+id="page1"
+>
+
+<div class="tape"></div>
+
+<div class="number">
+01
+</div>
+
+
+<div class="content">
+
+<h2 class="title">
+THE BEGINNING 🌷
+</h2>
+
+
+<div class="story">
+
+<p>
+Argh it was a calm evening when everything
+was going nice 😭 but thennn i sawwwww one
+idiottttt saying
+<span class="highlight">
+"bavla hai ky"
+</span>
+to literally everyone bruhhh 😭😭😭
+</p>
+
+
+<p>
+idkkkk whyyyy but mere mnn me aisa ky aaya
+that I texted herrrr 😭
+<span class="highlight">
+"hiiii"
+</span>
+us moti ne reply bhi de diya ywrrrr 🫶🏻
+(btw 🫶🏻 ye thing short me kisi reason ki
+wajah se bata rha, ky pata is thing se
+related koi suprise hooo)
+</p>
+
+
+<p>
+then that 2 idiots started talking to eachother 😭
+both where asking what uhhh likeeee etcccc 😭💗
+one idiot was taking permission to upload story
+bruhhhhhh 😭
+</p>
+
+
+<p>
+on that day they both talked for
+<span class="highlight">
+14 damnn hrssss
+</span>
+😭✨ sooo this is how we met, I'm not explaining
+this in para cuz, WHAT IF I have a suprise for
+uhh related to this..
+</p>
+
+</div>
+
+</div>
+
+
+<div class="buttons">
+
+<button
+class="back"
+onclick="previousPage()">
+← Back
+</button>
+
+<button
+class="continue"
+onclick="nextPage()">
+Continue → 💗
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- ================================= -->
+<!-- PAGE 2 -->
+<!-- ================================= -->
+
+<div
+class="scrap-page"
+id="page2"
+>
+
+<div class="tape"></div>
+
+<div class="number">
+02
+</div>
+
+
+<div class="content">
+
+<h2 class="title">
+GETTING CLOSER 💗
+</h2>
+
+
+<div class="story">
+
+<p>
+We started getting closer day by day 🤧
+likeee we started talking for hrssss bruh,
+started fighting like husband wifeee 😭
+nd then I started to get feelings for uhhh,
+maybe u got tooo, but I got moreee 😭
+</p>
+
+
+<p>
+at that time only i decided to carry on my
+future with uhh 😭🎀 then things started to
+change we both got feelings for eachother
+but wasn't able to confess, ikk u even tried
+but I'm fking idiot 😭🥀
+</p>
+
+
+<p>
+mm so that late night texts,that hrs of
+fighting and all got us into this rls 😭🎀
+that days literally felt like that I'm in
+heaven like ywrrr that was some of my best
+moments in my life 🤧✨
+</p>
+
+
+<p>
+likeee even if I got a chance to live in
+those daysss I'll definitely dooo 😭🫠
+</p>
+
+</div>
+
+</div>
+
+
+<div class="buttons">
+
+<button
+class="back"
+onclick="previousPage()">
+← Back
+</button>
+
+<button
+class="continue"
+onclick="nextPage()">
+Continue → 💗
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- ================================= -->
+<!-- PAGE 3 -->
+<!-- ================================= -->
+
+<div
+class="scrap-page"
+id="page3"
+>
+
+<div class="tape"></div>
+
+<div class="number">
+03
+</div>
+
+
+<div class="content">
+
+<h2 class="title">
+OUR MEMORIES 📸
+</h2>
+
+
+<div class="photos">
+
+
+<div class="polaroid">
+
+<div class="photo">
+    <img src="page2-pic1.jpg" alt="Photo 1">
+</div>
+
+<p>
+my favvv ss 😭🤍✨
+</p>
+
+</div>
+
+
+<div class="polaroid">
+
+<div class="photo">
+    <img src="page2-pic2.jpg" alt="Photo 2">
+</div>
+<p>
+dekho idiot ko 😭🎀
+</p>
+
+</div>
+
+
+<div class="polaroid">
+
+<div class="photo">
+    <img src="page2-pic3.jpg" alt="Photo 3">
+</div>
+
+<p>
+merihhh cutieeee 😭✨🤍
+</p>
+
+</div >
+
+
+</div>
+
+</div>
+
+
+<div class="buttons">
+
+<button
+class="back"
+onclick="previousPage()">
+← Back
+</button>
+
+<button
+class="continue"
+onclick="nextPage()">
+Continue → 💗
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- ================================= -->
+<!-- PAGE 4 -->
+<!-- ================================= -->
+
+<div
+class="scrap-page"
+id="page4"
+>
+
+<div class="tape"></div>
+
+<div class="number">
+04
+</div>
+
+
+<div class="content">
+
+<h2 class="title">
+365 DAYS ✨
+</h2>
+
+
+<div class="days">
+365
+</div>
+
+
+<div class="story">
+
+<p>
+Sooo i don't even know how fast these
+daysss wenttt 😭 but you seeeee one year
+before we were just frnddss bhyii who got
+some feelings for eachother and at time
+when I'm writing uhhh thisss 😭 13:33 pm,
+we both were fighting a lot bhyi 😭
+</p>
+
+
+<p>
+tbh abhi tk vo sb soch ke itna shi feel
+hota hai 🤧✨ ekaksha you seriously made
+this year special, every month these 2
+kids who don't Even know the meaning of
+love, dono ek dusre ko hadh se zyada
+loveee krte the 😭
+</p>
+
+
+<p>
+anniversary passes byyy and our feeling
+of love started getting moreee, andd now
+it's been literally
+<span class="highlight">
+365 days
+</span>
+since we met bhyi 😭✨
+</p>
+
+
+<p>
+it's so special not only this year i wanna
+celebrate our anniversary like this Every
+year ekaksha 😭🎀
+</p>
+
+</div>
+
+</div>
+
+
+<div class="buttons">
+
+<button
+class="back"
+onclick="previousPage()">
+← Back
+</button>
+
+<button
+class="continue"
+onclick="nextPage()">
+Continue → 💗
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- ================================= -->
+<!-- PAGE 5 -->
+<!-- ================================= -->
+
+<div
+class="scrap-page"
+id="page5"
+>
+
+<div class="tape"></div>
+
+<div class="number">
+05
+</div>
+
+
+<div class="content">
+
+<h2 class="title">
+TO MANY MORE… 🎀
+</h2>
+
+
+<div class="story">
+
+<p>
+Aghm so all I wanna say iss like how this
+year passed I want every year toooo be even
+more better than this in which there's not
+fights and all 🤧✨
+</p>
+
+
+<p>
+1 yr passed and my feelings for uhh has
+grown even moreee i just wishhh like our
+first yr things got little ruined it will not
+happen again in this yrr 🤧😭
+</p>
+
+
+<p>
+nddd tbh I just wanna celebrate our
+anniversary every yr likeeee thissss 😭✨
+and without uhhh it's not possible, I'll try
+everything i could to make uh as happy as
+possible 🫠
+</p>
+
+
+<p>
+and I'll just give uhh everything uhh
+wanttttt 😭 I wanna carry my whole life
+with uhh motiii 😭🎀
+</p>
+
+
+<p style="text-align:center;font-size:28px;">
+To many more years with you 🥹🎀💗
+</p>
+
+</div>
+
+</div>
+
+
+<div class="buttons">
+
+<button
+class="back"
+onclick="previousPage()">
+← Back
+</button>
+
+<button
+class="continue"
+onclick="finishStory()">
+Continue → 💗
+</button>
+
+</div>
+
+</div>
+
+
+</div>
+</div>
+
+
+
+<script>
+
+/* ==========================================
+   CURRENT PAGE
+========================================== */
+
+let currentPage = 1;
+
+const totalPages = 5;
+
+
+/* ==========================================
+   SHOW PAGE
+========================================== */
+
+function showPage(pageNumber){
+
+    /*
+       Hide EVERY scrapbook page
+    */
+
+    const allPages =
+        document.querySelectorAll(".scrap-page");
+
+    allPages.forEach(function(page){
+
+        page.classList.remove("active");
+
+    });
+
+
+    /*
+       Show selected page
+    */
+
+    const selected =
+        document.getElementById(
+            "page" + pageNumber
+        );
+
+    if(selected){
+
+        selected.classList.add("active");
+
+        currentPage = pageNumber;
+
+    }
+
+}
+
+
+/* ==========================================
+   NEXT
+========================================== */
+
+function nextPage(){
+
+    if(currentPage < totalPages){
+
+        currentPage++;
+
+        showPage(currentPage);
+
+    }
+
+}
+
+
+/* ==========================================
+   BACK
+========================================== */
+
+function previousPage(){
+
+    if(currentPage > 1){
+
+        currentPage--;
+
+        showPage(currentPage);
+
+    }
+
+    else{
+
+        /*
+           Page 1 → anniversary homepage
+        */
+
+        window.location.href =
+            "index.html";
+
+    }
+
+}
+
+
+/* ==========================================
+   FINAL CONTINUE
+========================================== */
+
+function finishStory(){
+
+    /*
+       Change this to whatever your
+       NEXT HTML FILE is called.
+    */
+
+    window.location.href =
+        "page3.html";
+
+}
+
+
+/* ==========================================
+   START
+========================================== */
+
+showPage(1);
+
+</script>
+
+
+</body>
+</html>
